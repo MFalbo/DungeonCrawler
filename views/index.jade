@@ -2,11 +2,11 @@ extends layout
 
 block content
 	p.intro Welcome to Dungeon Crawler
-	div.initializeForm
-		label Please enter a name for your world
-		input
-	div.initializeForm
-		label please enter a name for your character
-		input
-	div.initializeForm
-		button.submit.createButton Create World
+	form.initializeForm
+		label(for="worldName") Please enter a name for your world
+		input#worldName(type="text" name="worldName")
+		input.createButton(type="submit" value="Create World")
+	form.initializeForm2
+		label(for="playerName") Please enter a name for your character
+		input#playerName(type="text" name="playerName")
+		input.createButton(type="submit" value="Create Player")
