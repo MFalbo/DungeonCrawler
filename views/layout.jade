@@ -8,5 +8,16 @@ html(lang='en')
 	body
 		block content
 		
-		script(src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.js")
+		script(id="character-info" type="text/x-handlebars-template")
+			h3 {{playerName}}
+			p Level: {{level}}
+			p Health: {{health}}
+			p Inventory
+				ul
+					for item in inventory
+						li item
+
+
+		script(src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js")
+		script(src="//cdnjs.cloudflare.com/ajax/libs/handlebars.js/2.0.0/handlebars.min.js")
 		script(src="/scripts/main.js")

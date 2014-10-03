@@ -61,7 +61,7 @@ $(document).ready(function(){
 		console.log(player);
 
 		$('.initializeForm2').remove();
-		$('.intro').text(world.name);
+		// $('body').append($('#character-info'));
 		return false;
 	});
 
