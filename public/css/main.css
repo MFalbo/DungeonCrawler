@@ -1,0 +1,18 @@
+body{
+	width: 960px;
+	margin: 0 auto;
+}
+
+.intro{
+	text-align: center;
+}
+
+.initializeForm{
+	text-align: center;
+}
+
+.createButton{
+	text-align: center;
+	/*margin: 1px solid black;*/
+	border-radius: 11px;
+}
