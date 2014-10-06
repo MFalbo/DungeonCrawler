@@ -42,25 +42,80 @@ Player.prototype.restoreHealth = function(restoreAmount) {
 	console.log("Player restored health.  Health is " + this.health);
 };
 
+var Room = function(){
+	this.monster = Object,
+	this.item = Object,
+	this.leftDoor = Boolean,
+	this.rightDoor = Boolean
+	this.locationNum = Number
+}
+
 // Monster Constructor
 var Monster = function(){
-	this.name = ---,
-	this.type = ---,
-	this.lvl = ---,
+	this.name = String,
+	this.type = Object,
+	this.lvl = Number,
 	this.health = 100,
 	this.items = []
 }
 
+// ----------------Handlebars Templates---------------
+var characterInfoTemplate = $("#character-info");
+var characterInfoText = characterInfoTemplate.html();
+var characterTemplate = Handlebars.compile(characterInfoText);
 
+
+var createMap = function(){
+	for(var i=0; i<5; i++){
+		var tempRoom = new Room();
+		tempRoom.locationNum = i;
+		if(i===0){
+			tempRoom.leftDoor = false;
+			tempRoom.rightDoor = true;
+		}else if(i===4){
+			tempRoom.leftDoor = true;
+			tempRoom.rightDoor = false;
+		}else{
+			tempRoom.leftDoor = true;
+			tempRoom.rightDoor = true;
+		}
+		map.push(tempRoom);
+	}
+};
+
+var world = new World();
+var player = new Player();
+var map = [];
+
+createMap();
+
+console.log(map);
+world.rooms = map;
 
 $(document).ready(function(){
 	
-	var world = new World();
-	var player = new Player();
+	// var world = new World();
+	// var player = new Player();
+	// var map = [];
 
-	var characterInfoTemplate = $("#character-info");
-	var characterInfoText = characterInfoTemplate.html();
-	var characterTemplate = Handlebars.compile(characterInfoText);
+	// for(var i=0; i<5; i++){
+	// 	var tempRoom = new Room();
+	// 	tempRoom.locationNum = i;
+	// 	if(i===0){
+	// 		tempRoom.leftDoor = false;
+	// 		tempRoom.rightDoor = true;
+	// 	}else if(i===4){
+	// 		tempRoom.leftDoor = true;
+	// 		tempRoom.rightDoor = false;
+	// 	}else{
+	// 		tempRoom.leftDoor = true;
+	// 		tempRoom.rightDoor = true;
+	// 	}
+	// 	map.push(tempRoom);
+	// }
+
+	// console.log(map);
+	// world.rooms = map;
 
 	$('.initializeForm').submit(function(){
 
@@ -77,6 +132,7 @@ $(document).ready(function(){
 	$('.initializeForm2').submit(function(){
 
 		player.name = $('#playerName').val();
+		world.player = player;
 		console.log(player);
 
 		$('.initializeForm2').remove();
