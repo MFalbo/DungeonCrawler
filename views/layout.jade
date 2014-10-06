@@ -9,13 +9,14 @@ html(lang='en')
 		block content
 		
 		script(id="character-info" type="text/x-handlebars-template")
-			h3 {{playerName}}
-			p Level: {{level}}
-			p Health: {{health}}
-			p Inventory
-				ul
-					for item in inventory
-						li item
+			.characterInfo
+				h3 {{player.name}}
+				p Level: {{player.lvl}}
+				p Health: {{player.health}}
+				p Inventory: 
+					//- ul
+					//- 	for item in inventory
+					//- 		li item
 
 
 		script(src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js")

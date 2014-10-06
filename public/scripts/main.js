@@ -1,4 +1,4 @@
-console.log("main.js linked");
+// console.log("main.js linked");
 
 var World = function(name){
 	this.name = name,
@@ -43,6 +43,10 @@ $(document).ready(function(){
 	var world = new World();
 	var player = new Player();
 
+	var characterInfoTemplate = $("#character-info");
+	var characterInfoText = characterInfoTemplate.html();
+	var characterTemplate = Handlebars.compile(characterInfoText);
+
 	$('.initializeForm').submit(function(){
 
 		world.name = $('#worldName').val();
@@ -61,7 +65,7 @@ $(document).ready(function(){
 		console.log(player);
 
 		$('.initializeForm2').remove();
-		// $('body').append($('#character-info'));
+		$('body').append(characterTemplate({player: player}));
 		return false;
 	});
 

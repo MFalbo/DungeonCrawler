@@ -28,7 +28,7 @@ body{
 	box-shadow: 0px 3px 3px;
 }
 
-#character-info{
+.characterInfo{
 	border: 1px solid black;
 	float: right;
 	overflow: auto;
