@@ -25,11 +25,21 @@ var Player = function(name){
 	this.name = name,
 	this.type = Object, //save for second dev round? Require player to be instance of character type which needs to be instance of character?
 	this.lvl = 1,
+	this.health = 100,
 	this.inventory = []
 }
 Player.prototype.levelUp = function() {
 	this.lvl += 1;
 }
+Player.prototype.takeDamage = function(dmgAmount){
+	this.health -= dmgAmount;
+	this.health <= 0 ? console.log("Your Player has died!!") : console.log("Player took damage.  Health is " + this.health);
+}
+Player.prototype.restoreHealth = function(restoreAmount) {
+	this.health += restoreAmount;
+	this.health > 100 ? this.health = 100 : this.health;
+	console.log("Player restored health.  Health is " + this.health);
+};
 
 
 
@@ -67,6 +77,14 @@ $(document).ready(function(){
 		$('.initializeForm2').remove();
 		$('body').append(characterTemplate({player: player}));
 		return false;
+	});
+
+	$(".takeDmg").click(function(){
+		player.takeDamage(5);
+	});
+
+	$(".restoreHealth").click(function(){
+		player.restoreHealth(10);
 	});
 
 
