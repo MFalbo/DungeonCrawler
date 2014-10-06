@@ -1,5 +1,7 @@
 // console.log("main.js linked");
 
+// -------------------------Constructors--------------------------
+// World Constructor
 var World = function(name){
 	this.name = name,
 	this.player = Object,
@@ -19,8 +21,7 @@ World.prototype.populateMonsters = function() {
 	return monsters;
 };
 
-
-
+// Player Constructor
 var Player = function(name){
 	this.name = name,
 	this.type = Object, //save for second dev round? Require player to be instance of character type which needs to be instance of character?
@@ -41,12 +42,16 @@ Player.prototype.restoreHealth = function(restoreAmount) {
 	console.log("Player restored health.  Health is " + this.health);
 };
 
+// Monster Constructor
+var Monster = function(){
+	this.name = ---,
+	this.type = ---,
+	this.lvl = ---,
+	this.health = 100,
+	this.items = []
+}
 
 
-// player: function(String){
-// 		player = new Player(String);
-// 		return player;
-// 	},//wrong
 
 $(document).ready(function(){
 	
@@ -79,6 +84,7 @@ $(document).ready(function(){
 		return false;
 	});
 
+//Temporary event handlers to test damage and restore player methods
 	$(".takeDmg").click(function(){
 		player.takeDamage(5);
 	});
