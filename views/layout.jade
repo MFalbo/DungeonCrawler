@@ -16,8 +16,9 @@ html(lang='en')
 				p Health: {{player.health}}
 				p Inventory: 
 					//- ul
-					//- 	for item in inventory
+					//- 	for item in {{player.inventory}}
 					//- 		li item
+					//- Will likely need to register a helper function in handlebars in order to handle looping through the inventory array
 
 
 		script(src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js")

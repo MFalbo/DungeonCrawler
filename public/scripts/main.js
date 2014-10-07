@@ -99,7 +99,6 @@ $(document).ready(function(){
 
 		world.name = $('#worldName').val();
 		console.log(world);
-		// world = new World(worldName);
 
 		$('.initializeForm').replaceWith($('.initializeForm2'));
 		$('.initializeForm2').show();
@@ -109,7 +108,6 @@ $(document).ready(function(){
 
 	$('.initializeForm2').submit(function(){
 
-		// player.name = $('#playerName').val();
 		world.player.name = $('#playerName').val();
 		console.log(world.player);
 
