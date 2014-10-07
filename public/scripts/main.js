@@ -2,7 +2,7 @@
 
 // -------------------------Constructors--------------------------
 // World Constructor
-var World = function(name){
+var World = function(){
 	this.name = name,
 	this.player = Object,
 	this.rooms = Array,
@@ -22,7 +22,7 @@ World.prototype.populateMonsters = function() {
 };
 
 // Player Constructor
-var Player = function(name){
+var Player = function(){
 	this.name = name,
 	this.type = Object, //save for second dev round? Require player to be instance of character type which needs to be instance of character?
 	this.lvl = 1,
@@ -84,7 +84,8 @@ var createMap = function(){
 };
 
 var world = new World();
-var player = new Player();
+// var player = new Player();
+world.createPlayer();
 var map = [];
 
 createMap();
@@ -93,29 +94,6 @@ console.log(map);
 world.rooms = map;
 
 $(document).ready(function(){
-	
-	// var world = new World();
-	// var player = new Player();
-	// var map = [];
-
-	// for(var i=0; i<5; i++){
-	// 	var tempRoom = new Room();
-	// 	tempRoom.locationNum = i;
-	// 	if(i===0){
-	// 		tempRoom.leftDoor = false;
-	// 		tempRoom.rightDoor = true;
-	// 	}else if(i===4){
-	// 		tempRoom.leftDoor = true;
-	// 		tempRoom.rightDoor = false;
-	// 	}else{
-	// 		tempRoom.leftDoor = true;
-	// 		tempRoom.rightDoor = true;
-	// 	}
-	// 	map.push(tempRoom);
-	// }
-
-	// console.log(map);
-	// world.rooms = map;
 
 	$('.initializeForm').submit(function(){
 
@@ -131,22 +109,22 @@ $(document).ready(function(){
 
 	$('.initializeForm2').submit(function(){
 
-		player.name = $('#playerName').val();
-		world.player = player;
-		console.log(player);
+		// player.name = $('#playerName').val();
+		world.player.name = $('#playerName').val();
+		console.log(world.player);
 
 		$('.initializeForm2').remove();
-		$('body').append(characterTemplate({player: player}));
+		$('body').append(characterTemplate({player: world.player}));
 		return false;
 	});
 
 //Temporary event handlers to test damage and restore player methods
 	$(".takeDmg").click(function(){
-		player.takeDamage(5);
+		world.player.takeDamage(5);
 	});
 
 	$(".restoreHealth").click(function(){
-		player.restoreHealth(10);
+		world.player.restoreHealth(10);
 	});
 
 
